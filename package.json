@@ -1,0 +1,11 @@
+{
+  "name": "@pomle/nuxt-deploy",
+  "version": "0.0.0",
+  "description": "Deploy scripts for Nuxt apps.",
+  "author": "Pontus Alexander <pontus.alexander@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "bin": {
+    "nuxt-deploy": "./bin/deploy-github-pages.sh"
+  }
+}
