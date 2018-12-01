@@ -1,0 +1,24 @@
+version: 2
+jobs:
+  deploy:
+    docker:
+      - image: circleci/node:8
+    environment:
+      GIT_COMMITTER_NAME: 'Evaluate Bot'
+      GIT_COMMITTER_EMAIL: 'no-reply@bot.x'
+      GIT_AUTHOR_NAME: 'Evaluate Bot'
+      GIT_AUTHOR_EMAIL: 'no-reply@bot.x'
+    steps:
+      - checkout
+      - run: yarn install
+      - run: REPOSITORY_URL=$CIRCLE_REPOSITORY_URL yarn run nuxt-deploy
+
+workflows:
+  version: 2
+  deploy-flow:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only:
+                - master
