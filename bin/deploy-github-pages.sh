@@ -1,7 +1,8 @@
 #! /usr/bin/env bash
 set -e
 
-WORKDIR=deployed
+WORKDIR=${WORKDIR:-deployed}
+BRANCH=${BRANCH:-gh-pages}
 
 if ! git clone --single-branch -b $BRANCH $REPOSITORY_URL $WORKDIR; then
     mkdir -p $WORKDIR
