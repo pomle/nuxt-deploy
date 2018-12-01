@@ -1,6 +1,6 @@
 {
   "name": "@pomle/nuxt-deploy",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Deploy scripts for Nuxt apps.",
   "author": "Pontus Alexander <pontus.alexander@gmail.com>",
   "license": "MIT",
