@@ -3,16 +3,20 @@ set -e
 
 WORKDIR=deployed
 
-git clone --single-branch -b $BRANCH $CIRCLE_REPOSITORY_URL $WORKDIR
+if ! git clone --single-branch -b $BRANCH $REPOSITORY_URL $WORKDIR; then
+    mkdir -p $WORKDIR
+fi
 
 yarn run generate
 
 cp -Rf dist/* $WORKDIR/
-
 echo $CNAME > $WORKDIR/CNAME
 
 cd $WORKDIR
-
+git init
 git add .
-git commit -m "Deploy $CIRCLE_SHA1"
-git push $CIRCLE_REPOSITORY_URL HEAD:$BRANCH
+
+if git commit -m "Deploy $CIRCLE_SHA1";
+  then
+    git push $REPOSITORY_URL HEAD:$BRANCH
+fi
